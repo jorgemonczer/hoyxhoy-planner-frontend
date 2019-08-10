@@ -1,4 +1,10 @@
-h1 {
-  color: blue;
-  font-size: 150%;
+#toolbar1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
 }

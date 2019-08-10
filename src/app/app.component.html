@@ -1,11 +1,33 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="padding: 20px;">
-  <h1 style="color: blue">grokonez.com</h1>
-  <h3>{{title}}</h3>
-  <nav>
-    <a routerLink="customer" class="btn btn-primary active" role="button" routerLinkActive="active">Customers</a>
-    <a routerLink="add" class="btn btn-primary active" role="button" routerLinkActive="active">Add</a>
-    <a routerLink="findbyage" class="btn btn-primary active" role="button" routerLinkActive="active">Search</a>
-  </nav>
-  <router-outlet></router-outlet>
+<div *ngIf="loginService.isUserLoggedIn" style="padding: 20px;" >
+	<mat-toolbar #toolbar1 color="primary">
+		<!--mat-icon>done</mat-icon-->
+		<span><img src="../assets/planner-logo.png"/></span>
+		<!--span> v1</span-->
+		<span class="example-spacer"></span>
+		<button mat-button [mat-menu-trigger-for]="menu">
+			<mat-icon>menu</mat-icon>
+		</button>
+		&nbsp;
+		<button mat-button (click)="logout()">
+			<mat-icon>exit_to_app</mat-icon>
+		</button>
+	</mat-toolbar>
+		
+	<mat-menu #menu="matMenu">
+		<a routerLink="/projects" routerLinkActive="active" mat-menu-item>Projects</a>
+		<a routerLink="/users" routerLinkActive="active" mat-menu-item>Users</a>
+		<a routerLink="/backlog" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Backlog</a>
+		<a routerLink="/springs" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Springs</a>
+		<a routerLink="/springAsignment" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Springs Asignment</a>
+		<a routerLink="/springWizard" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Springs Wizard</a>
+		<a routerLink="/capacity" routerLinkActive="active" mat-menu-item>Capacity</a>
+	</mat-menu>
+
+	<mat-toolbar style="display: flex;">
+		<span >Welcome, {{loginService.currentUserName }}</span>
+		<span class="example-spacer"></span>
+		<span >{{loginService.currentProjectName + " " + loginService.currentSpringName}}</span>
+	</mat-toolbar>
 </div>
+<router-outlet></router-outlet>

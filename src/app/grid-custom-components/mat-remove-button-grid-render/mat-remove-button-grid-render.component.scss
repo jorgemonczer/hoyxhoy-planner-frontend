@@ -1,0 +1,10 @@
+.mat-mini-fab {
+    height: 22px;
+    width: 22px;
+    border-radius: 80%;
+    line-height: 22px;
+    &::ng-deep .mat-button-wrapper {
+        padding: 0 !important;
+        line-height: 22px;
+    }    
+}

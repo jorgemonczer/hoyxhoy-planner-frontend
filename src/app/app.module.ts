@@ -5,26 +5,36 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateCustomerComponent } from './create-customer/create-customer.component';
-import { CustomerDetailsComponent } from './customer-details/customer-details.component';
-import { CustomersListComponent } from './customers-list/customers-list.component';
-import { SearchCustomersComponent } from './search-customers/search-customers.component';
+import { SharedModule } from './shared/shared.module';
+import { ProjectsModule } from './projects/projects.module';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
+import { MatIconModule, MatMenuModule, MatToolbarModule, MatCardModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateCustomerComponent,
-    CustomerDetailsComponent,
-    CustomersListComponent,
-    SearchCustomersComponent
+    LoginComponent
   ],
   imports: [
+    SharedModule,
+    ProjectsModule,
+    UsersModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatCardModule,
+    BrowserAnimationsModule,
     HttpClientModule    
   ],
-  providers: [],
+  providers: [
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

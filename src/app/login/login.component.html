@@ -1,0 +1,35 @@
+<!--div class="modal-dialog">
+  <div class="loginmodal-container">
+    <h1>Login to Your Account</h1><br>
+    <button class="login loginmodal-submit" (click)="login()">Login With Google</button>
+  </div>
+</div-->
+<div class="login-content">
+<mat-card>
+  <mat-card-title>
+    <mat-toolbar>
+      HOYxHOY Application
+    </mat-toolbar>
+  </mat-card-title>
+  <mat-card-subtitle>
+      Login to Your Account
+  </mat-card-subtitle>
+  <mat-card-content>
+    <form  class="login-form" #myForm="ngForm">
+      <p *ngIf="errorMessage.length > 0" class="text-danger"> {{errorMessage}}</p>    
+      <mat-form-field class="field-full-width">
+          <input matInput [(ngModel)]="username" name="username" placeholder="user name" required>
+          <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput [(ngModel)]="password" name="password" type="password" placeholder="password" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <button type="submit" [disabled]="!myForm.valid" color="primary" (click)="login()">
+           Login
+      </button>
+      <!-- users mrotger@plann.er 123456  larce@plann.er 123456  jm@gmail.com ??????-->
+   </form>
+  </mat-card-content>
+</mat-card>
+</div>

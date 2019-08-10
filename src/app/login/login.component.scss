@@ -1,0 +1,28 @@
+.login-content {
+  margin: 0;
+  height: 100%;
+  width: 100%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  background: url(../../assets/login-background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+mat-card {
+  max-width: 40%;
+  margin: 1em auto;
+  line-height : 100%;
+//  padding: 20px 40px;
+//  text-align: center;
+}
+
+login-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
