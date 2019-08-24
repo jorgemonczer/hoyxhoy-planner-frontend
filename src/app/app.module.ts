@@ -12,6 +12,7 @@ import { LoginService } from './login/login.service';
 import { MatIconModule, MatMenuModule, MatToolbarModule, MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersModule } from './users/users.module';
+import { SpringsModule } from './springs/springs.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { UsersModule } from './users/users.module';
     SharedModule,
     ProjectsModule,
     UsersModule,
+    SpringsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

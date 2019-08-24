@@ -41,10 +41,13 @@ export class DateModel {
     public greaterOrEqualsThan(otherValue : string | Date | DateModel ) : boolean {
         return this._value >= this.toDate(otherValue);
     }
-
     
     public lessThan(otherValue : string | Date | DateModel ) : boolean {
         return this._value < this.toDate(otherValue);
+    }
+
+    public equalsThan(otherValue : string | Date | DateModel ) : boolean {
+        return this._value == this.toDate(otherValue);
     }
 
     public toDate(value : string | Date | DateModel ) : Date {

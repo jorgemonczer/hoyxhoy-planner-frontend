@@ -4,12 +4,15 @@ import { Project } from '../projects/project';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LoginUser } from './loginUser';
+import { Spring } from '../springs/spirng';
+import { User } from '../users/user';
 
 @Injectable()
 export class LoginService {
 
-  private userState: LoginUser = null;
+  private userState: User = null;
   private projectState: Project = null;
+  private springState: Spring = null;
  
   //public loginUserObs: Observable<LoginUser[]>;
   private baseUrl = './api/login';
@@ -24,12 +27,16 @@ export class LoginService {
   get currentUserName(): string {
     return this.userState !== null ? this.userState.username : 'Usuario Anónimo';
   }
- 
-  get currentUser(): LoginUser {
+
+  get currentName(): string {
+    return this.userState !== null ? this.userState.name : 'Usuario Anónimo';
+  }
+  
+  get currentUser(): User {
     return (this.userState !== null) ? this.userState : null;
   }
 
-  set currentUser(user: LoginUser) {
+  set currentUser(user: User) {
     this.userState = user;
   }
 
@@ -41,16 +48,24 @@ export class LoginService {
     this.projectState = project;
   }
 
-  get currentProjectId() : string {
-    return (this.projectState !== null) ? this.projectState.id : 'NOPROJECT';
+  get currentProjectId() : number {
+    return (this.projectState !== null) ? this.projectState.id : NaN;
   }
 
   get currentProjectName() : string {
     return (this.projectState !== null) ? this.projectState.code + ' - ' + this.projectState.name : 'Select a project';
   }
 
+  get currentSpring() : Spring {
+    return (this.springState !== null) ? this.springState : null;
+  }
+
+  set currentSpring( spring : Spring) {
+    this.springState = spring;
+  }
+
   get currentSpringName() : string {
-    return '& Select a spring';
+    return '& ' + ((this.springState !== null) ? this.springState.code + ' - ' + this.springState.name : 'Select a spring');
   }
 
   public get isUserLoggedIn(): boolean {
@@ -63,7 +78,7 @@ export class LoginService {
 //  }
  
   public loginWithUsername(username: string, password: string) {
-    return this.http.put(`${this.baseUrl}/${username}`, password) as Observable<LoginUser>;
+    return this.http.put(`${this.baseUrl}/${username}`, password) as Observable<User>;
   }
  
   public signOut(): void {

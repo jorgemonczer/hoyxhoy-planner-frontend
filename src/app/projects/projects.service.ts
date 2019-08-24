@@ -9,14 +9,14 @@ import { HttpClient } from '@angular/common/http';
 export class ProjectsService {
   private baseUrl = './api/projects';
 
-  constructor(public http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   getProjects() : Observable<Project[]>{
     return this.http.get(this.baseUrl) as Observable<Project[]>;
   }
 
-  getProjectById(id : string): Observable<Project> {
+  getProjectById(id : number): Observable<Project> {
     return this.http.get(`${this.baseUrl}/${id}`) as Observable<Project>;
   }
 
@@ -24,7 +24,7 @@ export class ProjectsService {
       return this.http.post(this.baseUrl, project)  as Observable<Project>;
   }
 
-  deleteProjectById(id: string) : Observable<Project> {
+  deleteProjectById(id: number) : Observable<Project> {
     return this.http.delete(`${this.baseUrl}/${id}`)  as Observable<Project>;
   }
 

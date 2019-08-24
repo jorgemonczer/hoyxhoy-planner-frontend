@@ -59,7 +59,6 @@ export class ProjectsComponent implements OnInit {
   refeshProjects(): void {
     this.populateProjects();
     this.initialMode();
-    this.resetControls();
   }
 
   private populateProjects() {
@@ -77,11 +76,11 @@ export class ProjectsComponent implements OnInit {
     return this.projectsService.getProjects();
   }
   
-  getProjectByKey(id: string): Observable<Project> {
+  getProjectById(id: number): Observable<Project> {
     return this.projectsService.getProjectById(id);
   }
 
-  removeProject(id: string) {
+  removeProject(id: number) {
     this.projectsService.deleteProjectById(id).subscribe(
       data => this.refeshProjects(),
       error => console.log(error)
@@ -160,9 +159,9 @@ export class ProjectsComponent implements OnInit {
         selectedRowAux = row;
     });
     this.loginService.currentProject = selectedRowAux;
-//    if (!this.loginService.currentSpring) {
-//      this.router.navigate(['/springs']);
-//    }
+    if (this.loginService.currentSpring===null) {
+      this.router.navigate(['/springs']);
+    }
 //    this.projectSelected = selectedRowAux;
 //    document.querySelector("#selectedRows").innerHTML = selectedRowsString;
   }  

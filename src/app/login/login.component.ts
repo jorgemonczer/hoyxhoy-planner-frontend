@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { LoginUser } from './loginUser';
 import { HttpErrorResponse } from '@angular/common/http';
+import { User } from '../users/user';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
   constructor(public loginService: LoginService, private router: Router) { }
 
   login() {
-      this.loginService.loginWithUsername(this.username, this.password).subscribe((loginUser:LoginUser) => {
+      this.loginService.loginWithUsername(this.username, this.password).subscribe((loginUser:User) => {
         this.loginService.currentUser = loginUser;
         this.router.navigate(['']);
       },

@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { TeamService } from './team.service';
+import { UserService } from './users.service';
 
 describe('TeamStructureService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TeamService]
+      providers: [UserService]
     });
   });
 
-  it('should be created', inject([TeamService], (service: TeamService) => {
+  it('should be created', inject([UserService], (service: UserService) => {
     expect(service).toBeTruthy();
   }));
 });

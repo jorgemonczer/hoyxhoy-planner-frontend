@@ -1,0 +1,56 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Spring Detail</mat-card-title>
+  </mat-card-header>
+  <form #myForm="ngForm">
+    <p *ngIf="errorMessage.length > 0" class="text-danger"> {{errorMessage}}</p>    
+    <mat-form-field>
+        <input matInput [(ngModel)]="spring.code" name="code" placeholder="Spring Code" required>
+        <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="spring.name" name="name" placeholder="Spring Name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="spring.springDays" name="springDays" placeholder="Spring Day" type="number" (change)="spring.setEndDateMdCalculed()" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="spring.startDateMd.value" name="startDate" placeholder="Start Date" type="date" required disabled no-weekend #startDate="ngModel" (change)="spring.setEndDateMdCalculed()" >
+      <mat-error *ngIf="startDate.errors && startDate.errors.required">Email required</mat-error>
+      <mat-error *ngIf="startDate.errors && startDate.errors.weekend && !startDate.errors.required ">Start Date on weekend</mat-error>
+      <!--mat-error>This field is required</mat-error-->
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="spring.endDateMd.value" name="endDate" placeholder="End Date" type="date" required disabled>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <button type="submit" *ngIf="!isEditMode" [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="addSpring()" matTooltip="Add {{spring.name}}">
+      <mat-icon>add</mat-icon>
+    </button>  
+    <button type="submit" *ngIf="isEditMode"  [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="updateSpring()" matTooltip="Confirm update {{spring.name}}">
+      <mat-icon>check</mat-icon>
+    </button>  
+    <button type="submit" *ngIf="isEditMode"  mat-mini-fab color="primary" (click)="cancelEditMode()" matTooltip="Cancel update {{spring.name}}">
+      <mat-icon>close</mat-icon>
+    </button>
+    </form>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Spring List</mat-card-title>
+  </mat-card-header>
+  <ag-grid-angular 
+    #agGrid style="width: 100%; height: 200px;" 
+    class="ag-theme-fresh" 
+    [gridOptions]="gridOptions" 
+    [columnDefs]="columnDefs" 
+    [rowData]="rowData" 
+    [context]="context" 
+    [rowSelection]="rowSelection"
+    (selectionChanged)="onSelectionChanged($event)"
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</mat-card>
