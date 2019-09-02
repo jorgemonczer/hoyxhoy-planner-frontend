@@ -13,6 +13,9 @@ import { MatIconModule, MatMenuModule, MatToolbarModule, MatCardModule } from '@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersModule } from './users/users.module';
 import { SpringsModule } from './springs/springs.module';
+import { FeaturesModule } from './backlog/features.module';
+import { AsignmentModule } from './asignment/asignment.module';
+import { CapacityModule } from './capacity/capacity.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { SpringsModule } from './springs/springs.module';
     ProjectsModule,
     UsersModule,
     SpringsModule,
+    FeaturesModule,
+    AsignmentModule,
+    CapacityModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

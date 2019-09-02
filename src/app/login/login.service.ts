@@ -64,6 +64,10 @@ export class LoginService {
     this.springState = spring;
   }
 
+  get currentSpringId() : number {
+    return (this.springState !== null) ? this.springState.id : NaN;
+  }
+
   get currentSpringName() : string {
     return '& ' + ((this.springState !== null) ? this.springState.code + ' - ' + this.springState.name : 'Select a spring');
   }
