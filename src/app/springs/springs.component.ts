@@ -191,9 +191,9 @@ export class SpringsComponent implements OnInit {
     this.gridColumnApi.autoSizeColumns();
   }
 
-  handleError(error: HttpErrorResponse) {
-    this.errorMessage = error.status==403 ? "Spring already exists":"Known Error";
-    console.log(error);
+  handleError(res: HttpErrorResponse) {
+    this.errorMessage = res.error.error_message; 
+    console.log(res);
   }
 
 }

@@ -100,9 +100,9 @@ export class ProjectsComponent implements OnInit {
     );
   }
 
-  handleError(error: HttpErrorResponse) {
-      this.errorMessage = error.status==403 ? "Project already exists":"Known Error";
-      console.log(error);
+  handleError(res: HttpErrorResponse) {
+      this.errorMessage = res.error.error_message; 
+      console.log(res);
   }
 
   updateProject(){

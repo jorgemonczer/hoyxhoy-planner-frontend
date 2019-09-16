@@ -108,9 +108,9 @@ export class AsignmentComponent implements OnInit {
     );
   }
 
-  handleError(error: HttpErrorResponse) {
-      this.errorMessage = error.status==403 ? "SpringAsignment already exists":"Known Error";
-      console.log(error);
+  handleError(res: HttpErrorResponse) {
+      this.errorMessage = res.error.error_message;
+      console.log(res);
   }
 
   updateAsignment(){
