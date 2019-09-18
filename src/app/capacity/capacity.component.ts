@@ -47,7 +47,9 @@ export class CapacityComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'Id', field: 'id', hide: true },
       { headerName: 'User', field: 'user.name', filter: 'text' , width: 150 },
-      { headerName: 'Available Hs.', field: 'availableHours', filter: 'text', width: 130 },
+      { headerName: 'Available Hs', field: 'availableHours', filter: 'text', width: 130 },
+      { headerName: 'Total Hs', field: 'availableOnSpring', filter: 'text', width: 130 },
+      { headerName: 'Remaining Hs', field: 'remainingOnSpring', filter: 'text', width: 130 },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 75 },
       { headerName: '', suppressFilter: true, cellRendererFramework: MatRemoveButtonGridRenderComponent, width: 75 }
     ];

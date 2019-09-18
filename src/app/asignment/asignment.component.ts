@@ -52,6 +52,7 @@ export class AsignmentComponent implements OnInit {
       { headerName: 'F.Code', field: 'feature.code', filter: 'text', width: 100},
       { headerName: 'Feature Title', field: 'feature.title', filter: 'text', width: 400 },
       { headerName: 'Estimated Hs.', field: 'feature.estimatedHours', filter: 'text', width: 130 },
+      { headerName: 'Remaining Hs.', field: 'remaining', filter: 'text', width: 130 },
       { headerName: 'Asigned', field: 'user.name', filter: 'text' , width: 150 },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 75 },
       { headerName: '', suppressFilter: true, cellRendererFramework: MatRemoveButtonGridRenderComponent, width: 75 }
