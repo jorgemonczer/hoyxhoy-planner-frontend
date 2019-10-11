@@ -147,6 +147,11 @@ export class SpendingComponent implements OnInit {
   onCellEditingStarted(params: any) {
     console.log("cellEditingStarted");
     console.log(params);
+//    console.log(params.value);
+//    console.log(params.column);
+//    console.log(params.data.capacity);
+//    console.log(params.node);
+//    params.node.setDataValue(params.column.colId, params.data.capacity);
   } 
 
   compareFeatures(o1:Feature,o2:Feature) : boolean {

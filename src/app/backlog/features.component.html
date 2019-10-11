@@ -24,7 +24,7 @@
       <input matInput [(ngModel)]="feature.committedDate" name="committedDate" placeholder="Committed Date" type="date" required #committedDate="ngModel">
       <mat-error>This field is required</mat-error>
     </mat-form-field>
-    <button type="submit" [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="addFeature()" matTooltip="Add {{feature.title}}">
+    <button type="submit" *ngIf="!isEditMode" [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="addFeature()" matTooltip="Add {{feature.title}}">
       <mat-icon>add</mat-icon>
     </button>  
     <button type="submit" *ngIf="isEditMode"  [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="updateFeature()" matTooltip="Confirm update {{feature.title}}">

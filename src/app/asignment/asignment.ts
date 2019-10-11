@@ -24,7 +24,7 @@ export class Asignment {
 
     calculateSumSpending() {
         let numOr0 = (n: number) => isNaN(n) ? 0 : n;
-        this.spending = this.spendingsInt.reduce((a,b) => numOr0(a) + numOr0(b));
+        this.spending = this.spendingsInt.reduce((a,b) => numOr0(a) + numOr0(b),0);
     }
 
 }
