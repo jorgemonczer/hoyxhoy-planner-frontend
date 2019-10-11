@@ -16,6 +16,7 @@ import { SpringsModule } from './springs/springs.module';
 import { FeaturesModule } from './backlog/features.module';
 import { AsignmentModule } from './asignment/asignment.module';
 import { CapacityModule } from './capacity/capacity.module';
+import { SpendingModule } from './spending/spending.module';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,9 @@ import { CapacityModule } from './capacity/capacity.module';
     UsersModule,
     SpringsModule,
     FeaturesModule,
-    AsignmentModule,
     CapacityModule,
+    AsignmentModule,
+    SpendingModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

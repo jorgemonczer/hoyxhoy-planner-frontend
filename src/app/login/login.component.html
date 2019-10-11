@@ -25,9 +25,11 @@
         <input matInput [(ngModel)]="password" name="password" type="password" placeholder="password" required>
         <mat-error>This field is required</mat-error>
       </mat-form-field>
-      <button type="submit" [disabled]="!myForm.valid" color="primary" (click)="login()">
-           Login
-      </button>
+      <div class="field-full-width txt_center margin1em">
+        <button color="primary" mat-raised-button type="submit" [disabled]="!myForm.valid" (click)="login()">
+            Login
+        </button>
+      </div>
       <!-- users mrotger@plann.er 123456  larce@plann.er 123456  jm@gmail.com ??????-->
    </form>
   </mat-card-content>

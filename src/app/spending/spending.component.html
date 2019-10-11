@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Asignment List</mat-card-title>
+  </mat-card-header>
+  <form #myForm="ngForm">
+    <p class="text-danger">{{errorMessage}}</p>    
+    <ag-grid-angular 
+      #agGrid style="width: 100%; height: 200px;" 
+      class="ag-theme-fresh" 
+      [gridOptions]="gridOptions" 
+      [columnDefs]="columnDefs" 
+      [rowData]="rowData" 
+      [context]="context" 
+      (gridReady)="onGridReady($event)"
+      (cellEditingStarted)="onCellEditingStarted($event)">
+    </ag-grid-angular>
+  <div class="field-full-width txt_center margin1em">
+      <button color="primary" class="my_button" mat-raised-button (click)="refeshAsignments()">Cancel</button>
+      <button color="primary" class="my_button" mat-raised-button (click)="saveSpendings()">Save</button>
+  </div>
+  </form>
+</mat-card>

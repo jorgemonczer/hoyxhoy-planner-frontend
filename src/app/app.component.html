@@ -20,8 +20,9 @@
 		<a routerLink="/backlog" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Backlog</a>
 		<a routerLink="/springs" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Springs</a>
 		<a routerLink="/asignment" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Asignment</a>
-		<a routerLink="/springWizard" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Springs Wizard</a>
+		<!--a routerLink="/springWizard" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Springs Wizard</a-->
 		<a routerLink="/capacity" routerLinkActive="active" mat-menu-item>Capacity</a>
+		<a routerLink="/spending" routerLinkActive="active" mat-menu-item [disabled]="!loginService.currentProject">Spending</a>
 	</mat-menu>
 
 	<mat-toolbar style="display: flex;">
