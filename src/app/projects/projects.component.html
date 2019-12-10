@@ -17,7 +17,7 @@
       <mat-error>This field is required</mat-error>
     </mat-form-field>
     <mat-form-field hintLabel="Ej. 10,15,20">
-      <input matInput [(ngModel)]="project.springDays" name="springDays" placeholder="Spring Days" type="number" required>
+      <input matInput [(ngModel)]="project.springDays" name="springDays" placeholder="Spring Days" type="number" min="0" max="999" required>
       <mat-error>This field is required</mat-error>
     </mat-form-field>
     <button type="submit" *ngIf="!isEditMode" [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="addProject()" matTooltip="Add {{project.name}}">

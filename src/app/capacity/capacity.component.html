@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Spring Asignment Detail</mat-card-title>
+    <mat-card-title>Capacity Detail</mat-card-title>
   </mat-card-header>
   <form #myForm="ngForm">
     <p *ngIf="errorMessage.length > 0" class="text-danger"> {{errorMessage}}</p>    
@@ -13,7 +13,7 @@
       <mat-error>This field is required</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [(ngModel)]="capacity.availableHours" name="availableHours" placeholder="Available Hours" type="number" required>
+      <input matInput [ngModel]="capacity.availableHours| number:'1.2-2'" (ngModelChange)="capacity.availableHours=$event" [ngModelOptions]="{updateOn: 'blur'}" (change)="frm.setTwoNumberDecimal($event)" name="availableHours" placeholder="Available Hours" type="number" min="0.00" max="24.00" required>
       <mat-error>This field is required</mat-error>
     </mat-form-field>
     <button type="submit" *ngIf="!isEditMode" [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="addCapacity()" matTooltip="Add {{getMatTooltipButton()}}">
@@ -30,7 +30,7 @@
 
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Asignment List</mat-card-title>
+    <mat-card-title>Capacity List</mat-card-title>
   </mat-card-header>
   <ag-grid-angular 
     #agGrid style="width: 100%; height: 200px;" 

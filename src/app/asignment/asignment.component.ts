@@ -12,6 +12,7 @@ import { FeaturesService } from '../backlog/features.service';
 import { UserService } from '../users/users.service';
 import { Asignment } from './asignment';
 import { AsignmentService } from './asignment.service';
+import { AgFormatterService } from '../shared/ag-formatter.service';
 
 @Component({
   selector: 'app-asignment',
@@ -35,7 +36,7 @@ export class AsignmentComponent implements OnInit {
   private errorMessage : string = "";
   private isEditMode: boolean = false;
 
-  constructor(private asignmentsService: AsignmentService, private featuresService :FeaturesService, private userService :UserService, private loginService: LoginService) {
+  constructor(private asignmentsService: AsignmentService, private featuresService :FeaturesService, private userService :UserService, private loginService: LoginService, private frm: AgFormatterService) {
 
     this.context = { componentParent: this };
 
@@ -46,14 +47,15 @@ export class AsignmentComponent implements OnInit {
     this.gridOptions.suppressRowClickSelection = false;
     this.gridOptions.enableColResize = true;
     this.gridOptions.enableCellChangeFlash = true;
+    this.gridOptions.headerHeight = 45;
 
     this.columnDefs = [
       { headerName: 'Id', field: 'id', hide: true },
       { headerName: 'F.Code', field: 'feature.code', filter: 'text', width: 100},
       { headerName: 'Feature Title', field: 'feature.title', filter: 'text', width: 400 },
-      { headerName: 'Estimated Hs.', field: 'feature.estimatedHours', filter: 'text', width: 130 },
-      { headerName: 'Remaining Hs.', field: 'remaining', filter: 'text', width: 130 },
+      { headerName: 'Estimated Hs.', field: 'feature.estimatedHours', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
       { headerName: 'Asigned', field: 'user.name', filter: 'text' , width: 150 },
+      { headerName: 'Asign </br>Remaining Hs.', field: 'remaining', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 75 },
       { headerName: '', suppressFilter: true, cellRendererFramework: MatRemoveButtonGridRenderComponent, width: 75 }
     ];

@@ -10,6 +10,7 @@ import { User } from '../users/user';
 import { UserService } from '../users/users.service';
 import { Capacity } from './capacity';
 import { CapacityService } from './capacity.service';
+import { AgFormatterService } from '../shared/ag-formatter.service';
 
 @Component({
   selector: 'app-capacity',
@@ -32,7 +33,7 @@ export class CapacityComponent implements OnInit {
   private errorMessage : string = "";
   private isEditMode: boolean = false;
 
-  constructor(private capacitysService: CapacityService, private userService :UserService, private loginService: LoginService) {
+  constructor(private capacitysService: CapacityService, private userService :UserService, private loginService: LoginService, private frm: AgFormatterService) {
 
     this.context = { componentParent: this };
 
@@ -47,9 +48,9 @@ export class CapacityComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'Id', field: 'id', hide: true },
       { headerName: 'User', field: 'user.name', filter: 'text' , width: 150 },
-      { headerName: 'Available Hs', field: 'availableHours', filter: 'text', width: 130 },
-      { headerName: 'Total Hs', field: 'availableOnSpring', filter: 'text', width: 130 },
-      { headerName: 'Remaining Hs', field: 'remainingOnSpring', filter: 'text', width: 130 },
+      { headerName: 'Available Hs', field: 'availableHours', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
+      { headerName: 'Total Hs', field: 'availableOnSpring', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
+      { headerName: 'Remaining Hs', field: 'remainingOnSpring', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 75 },
       { headerName: '', suppressFilter: true, cellRendererFramework: MatRemoveButtonGridRenderComponent, width: 75 }
     ];

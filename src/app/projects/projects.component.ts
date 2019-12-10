@@ -9,6 +9,7 @@ import { MatEditButtonGridRenderComponent } from '../grid-custom-components/mat-
 import { MatRemoveButtonGridRenderComponent } from '../grid-custom-components/mat-remove-button-grid-render/mat-remove-button-grid-render.component';
 import { LoginService } from '../login/login.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AgFormatterService } from '../shared/ag-formatter.service';
 
 @Component({
   selector: 'app-projects',
@@ -31,7 +32,7 @@ export class ProjectsComponent implements OnInit {
   private errorMessage : string = "";
   private isEditMode: boolean = false;
 
-  constructor(private projectsService: ProjectsService, private loginService: LoginService, private router: Router) {
+  constructor(private projectsService: ProjectsService, private loginService: LoginService, private router: Router, private frm: AgFormatterService) {
 
     this.context = { componentParent: this };
 
@@ -44,7 +45,7 @@ export class ProjectsComponent implements OnInit {
       { headerName: 'Id', field: 'id', hide: true },
       { headerName: 'Code', field: 'code', filter: 'text', width: 120 },
       { headerName: 'Name', field: 'name', filter: 'text', width: 250 },
-      { headerName: 'Start Date', field: 'startDate', filter: 'date', width: 140, valueFormatter: this.dateFormatter },
+      { headerName: 'Start Date', field: 'startDate', filter: 'date', width: 140, valueFormatter: this.frm.ag_dateFormatter },
       { headerName: 'Spring Days', field: 'springDays', type: "numericColumn", filter: 'number',width: 150 },
       { headerName: 'Status', field: 'status', filter: 'text', width: 120 },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 40 },
@@ -66,10 +67,6 @@ export class ProjectsComponent implements OnInit {
       projectList => this.rowData = projectList, 
       error => this.handleError(error)
     );
-  }
-
-  dateFormatter(params: any) {
-    return new Date(params.value).toLocaleDateString("es-ES",{timeZone: 'UTC', year:"numeric",month:"2-digit", day:"2-digit"});
   }
 
   get projects(): Observable<Project[]> {

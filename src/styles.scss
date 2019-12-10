@@ -64,3 +64,14 @@ mat-toolbar-row {
 .grid-number-cell {
   text-align: right;
 }
+
+br {
+  display: block; /* makes it have a width */
+  content: ""; /* clears default height */
+  margin-top: -7px; /* change this to whatever height you want it */
+}
+
+.ag-header-center {
+  text-align: center;
+}
+

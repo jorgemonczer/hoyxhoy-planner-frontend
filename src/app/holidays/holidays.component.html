@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Holidays Detail</mat-card-title>
+  </mat-card-header>
+  <form #myForm="ngForm">
+    <p *ngIf="errorMessage.length > 0" class="text-danger"> {{errorMessage}}</p>    
+    <mat-form-field>
+        <input matInput [(ngModel)]="holiday.date" name="date" placeholder="Date" type="date" required #date="ngModel" [disabled]="isEditMode">
+        <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="holiday.description" name="description" placeholder="Description" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <button type="submit" *ngIf="!isEditMode" [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="addHoliday()" matTooltip="Add {{holiday.description}}">
+      <mat-icon>add</mat-icon>
+    </button>  
+    <button type="submit" *ngIf="isEditMode"  [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="updateHoliday()" matTooltip="Confirm update {{holiday.descriptiion}}">
+      <mat-icon>check</mat-icon>
+    </button>  
+    <button type="submit" *ngIf="isEditMode"  mat-mini-fab color="primary" (click)="cancelEditMode()" matTooltip="Cancel update {{holiday.description}}">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button type="submit" *ngIf="!isEditMode"  [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="createHoliday()" matTooltip="Create Sequence">
+        <mat-icon>group_add</mat-icon>
+      </button>  
+    </form>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Holiday List</mat-card-title>
+  </mat-card-header>
+  <ag-grid-angular 
+    #agGrid style="width: 100%; height: 200px;" 
+    class="ag-theme-fresh" 
+    [gridOptions]="gridOptions" 
+    [columnDefs]="columnDefs" 
+    [rowData]="rowData" 
+    [context]="context" 
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</mat-card>

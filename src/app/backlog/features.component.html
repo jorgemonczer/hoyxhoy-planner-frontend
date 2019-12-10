@@ -12,12 +12,10 @@
       <input matInput [(ngModel)]="feature.title" name="title" placeholder="Title" required>
       <mat-error>This field is required</mat-error>
     </mat-form-field>
-    <!--mat-form-field>
-      <input matInput [(ngModel)]="feature.status" name="status" placeholder="Status" required #status="ngModel">
-      <mat-error>This field is required</mat-error>
-    </mat-form-field-->
+    <!--span>{{feature.estimatedHours| number:'1.2-2'}}</span Show decimal format!-->
     <mat-form-field>
-      <input matInput [(ngModel)]="feature.estimatedHours" name="estimatedHours" placeholder="Estimated Hours" type="number" maxlength="3" required>
+      <input matInput [ngModel]="feature.estimatedHours| number:'1.2-2'"  (ngModelChange)="feature.estimatedHours=$event" [ngModelOptions]="{updateOn: 'blur'}" (change)="frm.setTwoNumberDecimal($event)" name="estimatedHours" placeholder="Estimated Hours" type="number" min="0.00" max="999.99"  required>
+      <!--input matInput [(ngModel)]="feature.estimatedHours" name="estimatedHours" placeholder="Estimated Hours" type="number"  min="0.00" maxlength="3" required (keyup)="frm.validateNumberTwoDecimal($event)" -->
       <mat-error>This field is required</mat-error>
     </mat-form-field>
     <mat-form-field>

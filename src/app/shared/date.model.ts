@@ -50,9 +50,13 @@ export class DateModel {
         return this._value == this.toDate(otherValue);
     }
 
-    public toDate(value : string | Date | DateModel ) : Date {
+    public getDate() : Date {
+        return this._value;
+    }
+
+    public toDate(value : string | Date | DateModel) : Date {
         let valueToDate:Date = null;
-        if (typeof value === 'string') {
+         if (typeof value === 'string') {
             valueToDate = new Date(value);
         } else if (value instanceof Date) {
             valueToDate = <Date>value;

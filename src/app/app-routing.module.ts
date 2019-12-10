@@ -9,6 +9,8 @@ import { FeaturesComponent } from './backlog/features.component';
 import { AsignmentComponent } from './asignment/asignment.component';
 import { CapacityComponent } from './capacity/capacity.component';
 import { SpendingComponent } from './spending/spending.component';
+import { HolidaysComponent } from './holidays/holidays.component';
+import { OutlookComponent } from './outlook/outlook.component';
  
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'asignment', component: AsignmentComponent },
   { path: 'capacity', component: CapacityComponent },
   { path: 'spending', component: SpendingComponent },
+  { path: 'holidays', component: HolidaysComponent },
+  { path: 'outlook', component: OutlookComponent },
   { path: 'users', component: UsersComponent },
   { path: 'login', component: LoginComponent }  
 ];

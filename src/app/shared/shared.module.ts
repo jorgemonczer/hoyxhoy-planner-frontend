@@ -21,6 +21,7 @@ import { MatEditButtonGridRenderModule } from '../grid-custom-components/mat-edi
 import { NoWeekendValidator } from './date.weekend.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { TwoDigitDecimalNumber } from './decimal.directive';
 
 @NgModule({
   imports: [
@@ -63,6 +64,6 @@ import { BrowserModule } from '@angular/platform-browser';
     MatEditButtonGridRenderModule,
     MatStepperModule
   ],
-  declarations: [NoWeekendValidator]
+  declarations: [NoWeekendValidator,TwoDigitDecimalNumber]
 })
 export class SharedModule { }

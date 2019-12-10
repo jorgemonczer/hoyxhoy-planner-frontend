@@ -8,6 +8,7 @@ import { LoginService } from '../login/login.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Feature } from './feature';
 import { FeaturesService } from './features.service';
+import { AgFormatterService } from '../shared/ag-formatter.service';
 
 @Component({
   selector: 'app-features',
@@ -29,7 +30,7 @@ export class FeaturesComponent implements OnInit {
   private errorMessage : string = "";
   private isEditMode: boolean = false;
 
-  constructor(private featuresService: FeaturesService, private loginService: LoginService) {
+  constructor(private featuresService: FeaturesService, private loginService: LoginService, private frm: AgFormatterService) {
 
     this.context = { componentParent: this };
 
@@ -45,8 +46,8 @@ export class FeaturesComponent implements OnInit {
       { headerName: 'Id', field: 'id', hide: true },
       { headerName: 'F.Code', field: 'code', filter: 'text' , width: 100 },
       { headerName: 'Feature Title', field: 'title', filter: 'text', width: 400 },
-      { headerName: 'Estimated Hours', field: 'estimatedHours', filter: 'text' , width: 130 },
-      { headerName: 'Committed Date', field: 'committedDate', filter: 'text' , width: 170 },
+      { headerName: 'Estimated Hours', field: 'estimatedHours', type: "numericColumn", filter: 'number' , valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
+      { headerName: 'Committed Date', field: 'committedDate', filter: 'text', valueFormatter: this.frm.ag_dateFormatter , width: 170 },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 75 },
       { headerName: '', suppressFilter: true, cellRendererFramework: MatRemoveButtonGridRenderComponent, width: 75 }
     ];
@@ -69,7 +70,11 @@ export class FeaturesComponent implements OnInit {
   }
 
   dateFormatter(params: any) {
-    return new Date(params.value).toLocaleDateString("es-ES",{timeZone: 'UTC', year:"numeric",month:"2-digit", day:"2-digit"});
+    return new Date(params.value).toLocaleDateString("en-US",{timeZone: 'UTC', year:"numeric",month:"2-digit", day:"2-digit"});
+  }
+
+  numberFormatter(params: any) {
+    return params.value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
   }
 
   get features(): Observable<Feature[]> {

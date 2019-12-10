@@ -9,6 +9,7 @@ import { DateModel } from '../shared/date.model';
 import { LoginService } from '../login/login.service';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AgFormatterService } from '../shared/ag-formatter.service';
 
 @Component({
   selector: 'app-springs',
@@ -31,7 +32,7 @@ export class SpringsComponent implements OnInit {
   private errorMessage : string = "";
   private isEditMode: boolean = false;
 
-  constructor(private springsService: SpringsService, private loginService: LoginService) {
+  constructor(private springsService: SpringsService, private loginService: LoginService, private frm: AgFormatterService) {
 
     this.context = { componentParent: this };
 
@@ -50,9 +51,9 @@ export class SpringsComponent implements OnInit {
       { headerName: 'Spring Code', field: 'code', filter: 'text', width: 150 },
       { headerName: 'Spring Name', field: 'name', filter: 'text', width: 150 },
       { headerName: 'Status', field: 'status', filter: 'text', width: 150 },
-      { headerName: 'Spring Days', field: 'springDays', filter: 'number', width: 150 },
-      { headerName: 'Start Date', field: 'startDate', filter: 'text', width: 150, valueFormatter: this.dateFormatter },
-      { headerName: 'End Date', field: 'endDate', filter: 'text', width: 150, valueFormatter: this.dateFormatter },
+      { headerName: 'Spring Days', field: 'springDays', type: "numericColumn", filter: 'number', width: 150 },
+      { headerName: 'Start Date', field: 'startDate', filter: 'text', width: 150, valueFormatter: this.frm.ag_dateFormatter },
+      { headerName: 'End Date', field: 'endDate', filter: 'text', width: 150, valueFormatter: this.frm.ag_dateFormatter },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 75 },
       { headerName: '', suppressFilter: true, cellRendererFramework: MatRemoveButtonGridRenderComponent, width: 75 }
     ];
@@ -79,10 +80,6 @@ export class SpringsComponent implements OnInit {
 
   currencyFormatter(params) {
     return '£' + params.value;
-  }
-
-  dateFormatter(params: any) {
-    return new Date(params.value).toLocaleDateString("es-ES",{timeZone: 'UTC', year:"numeric",month:"2-digit", day:"2-digit"});
   }
 
   get springs(): Observable<Spring[]>{

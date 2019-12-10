@@ -17,6 +17,8 @@ import { FeaturesModule } from './backlog/features.module';
 import { AsignmentModule } from './asignment/asignment.module';
 import { CapacityModule } from './capacity/capacity.module';
 import { SpendingModule } from './spending/spending.module';
+import { HolidaysModule } from './holidays/holidays.module';
+import { OutlookModule } from './outlook/outlook.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { SpendingModule } from './spending/spending.module';
     CapacityModule,
     AsignmentModule,
     SpendingModule,
+    HolidaysModule,
+    OutlookModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

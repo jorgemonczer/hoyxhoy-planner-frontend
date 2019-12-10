@@ -1,6 +1,5 @@
 import { User } from '../users/user';
 import { Feature } from '../backlog/feature';
-import { Spending } from '../spending/spending';
 
 export class Asignment {
     
