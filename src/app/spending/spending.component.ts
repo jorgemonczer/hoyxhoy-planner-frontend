@@ -47,7 +47,7 @@ export class SpendingComponent implements OnInit {
     this.gridOptions.enableCellChangeFlash = true;
     this.gridOptions.getRowStyle = function(params: any) {
       if (params.data.feature.estimatedHours - params.data.spending === 0) {
-          return { background: 	'#E08E8E' }
+          return { background: 	'#DAEFFE' }
       }
     }
     this.gridOptions.headerHeight = 65;

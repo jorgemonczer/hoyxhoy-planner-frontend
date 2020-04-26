@@ -12,6 +12,10 @@
       <input matInput [(ngModel)]="holiday.description" name="description" placeholder="Description" required>
       <mat-error>This field is required</mat-error>
     </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="years" name="years" placeholder="Years" type="number" min="0" max="99">
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
     <button type="submit" *ngIf="!isEditMode" [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="addHoliday()" matTooltip="Add {{holiday.description}}">
       <mat-icon>add</mat-icon>
     </button>  
@@ -21,7 +25,7 @@
     <button type="submit" *ngIf="isEditMode"  mat-mini-fab color="primary" (click)="cancelEditMode()" matTooltip="Cancel update {{holiday.description}}">
       <mat-icon>close</mat-icon>
     </button>
-    <button type="submit" *ngIf="!isEditMode"  [disabled]="!myForm.valid" mat-mini-fab color="primary" (click)="createHoliday()" matTooltip="Create Sequence">
+    <button type="submit" *ngIf="!isEditMode"  [disabled]="!myForm.valid || !years" mat-mini-fab color="primary" (click)="addHolidaysForYears()" matTooltip="Create Sequence">
         <mat-icon>group_add</mat-icon>
       </button>  
     </form>

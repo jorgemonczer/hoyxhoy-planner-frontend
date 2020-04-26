@@ -24,6 +24,10 @@ export class HolidaysService {
       return this.http.post(this.baseUrl, holiday)  as Observable<Holiday>;
   }
 
+  addHolidaysForYears(holiday: Holiday,years: number): Observable<Holiday>  {
+    return this.http.post(`${this.baseUrl}/${years}`, holiday)  as Observable<Holiday>;
+  }
+
   deleteHolidayByDate(date: Date) : Observable<Holiday> {
     return this.http.delete(`${this.baseUrl}/${date}`)  as Observable<Holiday>;
   }
@@ -31,4 +35,5 @@ export class HolidaysService {
   updateHoliday(holiday : Holiday): Observable<Holiday> {
     return this.http.put(`${this.baseUrl}/${holiday.date}`, holiday) as Observable<Holiday>;
   }
+
 }

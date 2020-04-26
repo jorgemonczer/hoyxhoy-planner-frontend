@@ -16,6 +16,7 @@ import { AgFormatterService } from '../shared/ag-formatter.service';
 })
 export class HolidaysComponent implements OnInit {
   public holiday = new Holiday();
+  public years: number;
   public context;
 
   @ViewChild('myForm',{static: false}) myForm : NgForm;
@@ -68,7 +69,7 @@ export class HolidaysComponent implements OnInit {
     return new Date(params.value).toLocaleDateString("es-ES",{timeZone: 'UTC', year:"numeric",month:"2-digit", day:"2-digit"});
   }
 
-  get users(): Observable<Holiday[]> {
+  get holidays(): Observable<Holiday[]> {
     return this.holidayService.getHolidays();
   }
   
@@ -86,10 +87,18 @@ export class HolidaysComponent implements OnInit {
   editHoliday(data: Holiday) {
     this.holiday = new Holiday(data);
     this.errorMessage = "";
+    this.years = NaN;
   }
   
   addHoliday(): void {
     this.holidayService.addHoliday(this.holiday).subscribe(
+      data => this.refeshHolidays(),
+      error => this.handleError(error)
+    );
+  }
+
+  addHolidaysForYears(): void {
+    this.holidayService.addHolidaysForYears(this.holiday,this.years).subscribe(
       data => this.refeshHolidays(),
       error => this.handleError(error)
     );
