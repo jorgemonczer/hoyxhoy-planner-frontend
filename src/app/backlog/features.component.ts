@@ -44,9 +44,9 @@ export class FeaturesComponent implements OnInit {
 
     this.columnDefs = [
       { headerName: 'Id', field: 'id', hide: true },
-      { headerName: 'F.Code', field: 'code', filter: 'text' , width: 100 },
+      { headerName: 'F.Code', field: 'code', filter: 'text' , width: 110 },
       { headerName: 'Feature Title', field: 'title', filter: 'text', width: 400 },
-      { headerName: 'Estimated Hours', field: 'estimatedHours', type: "numericColumn", filter: 'number' , valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
+      { headerName: 'Estimated Hours', field: 'estimatedHours', type: "numericColumn", filter: 'number' , valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 160 },
       { headerName: 'Committed Date', field: 'committedDate', filter: 'text', valueFormatter: this.frm.ag_dateFormatter , width: 170 },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 75 },
       { headerName: '', suppressFilter: true, cellRendererFramework: MatRemoveButtonGridRenderComponent, width: 75 }

@@ -12,6 +12,7 @@ import {
   MatTooltipModule,
   MatCheckboxModule,
   MatSelectModule,
+  MatSortModule,
   MatStepperModule,
 } from '@angular/material';
 
@@ -35,6 +36,7 @@ import { TwoDigitDecimalNumber } from './decimal.directive';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    MatSortModule,
     MatTooltipModule,
     MatCheckboxModule,
     MatSelectModule,
@@ -55,6 +57,7 @@ import { TwoDigitDecimalNumber } from './decimal.directive';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    MatSortModule,
     MatTooltipModule,
     MatCheckboxModule,
     MatSelectModule,

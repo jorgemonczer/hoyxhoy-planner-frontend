@@ -1,3 +1,34 @@
-<p>
-  outlook works!
-</p>
+<div class="flex-container">
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Project Advance</mat-card-title>
+  </mat-card-header>
+  <ag-grid-angular 
+    #agGrid style="width: 100%; height: 300px;" 
+    class="ag-theme-material" 
+    [gridOptions]="gridOptions" 
+    [columnDefs]="columnDefs" 
+    [rowData]="rowData" 
+    [context]="context"
+    [headerHeight]="0" 
+    [rowSelection]="rowSelection"
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</mat-card>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Project Projection</mat-card-title>
+  </mat-card-header>
+  <ag-grid-angular 
+    #agGrid style="width: 100%; height: 300px;" 
+    class="ag-theme-material" 
+    [gridOptions]="gridOptions" 
+    [columnDefs]="columnDefs2" 
+    [rowData]="rowData2" 
+    [context]="context" 
+    [headerHeight]="0" 
+    [rowSelection]="rowSelection"
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</mat-card>
+</div>

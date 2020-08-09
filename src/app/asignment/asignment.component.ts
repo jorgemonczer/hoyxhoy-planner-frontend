@@ -47,15 +47,15 @@ export class AsignmentComponent implements OnInit {
     this.gridOptions.suppressRowClickSelection = false;
     this.gridOptions.enableColResize = true;
     this.gridOptions.enableCellChangeFlash = true;
-    this.gridOptions.headerHeight = 45;
+    this.gridOptions.headerHeight = 56;
 
     this.columnDefs = [
       { headerName: 'Id', field: 'id', hide: true },
-      { headerName: 'F.Code', field: 'feature.code', filter: 'text', width: 100},
+      { headerName: 'F.Code', field: 'feature.code', filter: 'text', width: 110},
       { headerName: 'Feature Title', field: 'feature.title', filter: 'text', width: 400 },
-      { headerName: 'Estimated Hs.', field: 'feature.estimatedHours', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
+      { headerName: 'Estimated Hs.', field: 'feature.estimatedHours', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 160 },
       { headerName: 'Asigned', field: 'user.name', filter: 'text' , width: 150 },
-      { headerName: 'Asign </br>Remaining Hs.', field: 'remaining', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
+      { headerName: 'Asign Remaining Hs.', field: 'remaining', colId: 'remaining2x', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 150 },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 75 },
       { headerName: '', suppressFilter: true, cellRendererFramework: MatRemoveButtonGridRenderComponent, width: 75 }
     ];
@@ -63,11 +63,12 @@ export class AsignmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.populateAsignments();
-    this.featuresService.getFeatures().toPromise().then( feats => this.features = feats);
+    this.featuresService.getFeaturesToAsign().toPromise().then( feats => this.features = feats);
     this.userService.getUsers().toPromise().then(users => this.users = users);
 }
 
   refeshAsignments(): void {
+    this.featuresService.getFeaturesToAsign().toPromise().then( feats => this.features = feats);
     this.populateAsignments();
     this.initialMode();
   }
@@ -100,6 +101,7 @@ export class AsignmentComponent implements OnInit {
 
   editAsignment(data: Asignment) {
     this.asignment = new Asignment(data);
+    this.features.push(this.asignment.feature);
     this.errorMessage = "";
   }
   
@@ -144,6 +146,7 @@ export class AsignmentComponent implements OnInit {
   }
 
   cancelEditMode() {
+    this.features = this.features.filter(item => item !== this.asignment.feature);
     this.initialMode();
   }  
 

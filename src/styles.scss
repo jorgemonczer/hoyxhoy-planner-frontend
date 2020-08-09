@@ -75,3 +75,12 @@ br {
   text-align: center;
 }
 
+//you should define colId ended in 2x as columnDef to apply this class  
+//It is for headear in 2 lines
+[col-id$="2x"] .ag-header-cell-text {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  line-height: 18px;
+  padding-top: 10px;
+}

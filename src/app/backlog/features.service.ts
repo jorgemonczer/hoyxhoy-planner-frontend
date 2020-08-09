@@ -22,6 +22,10 @@ export class FeaturesService {
     return this.http.get(`${this.baseUrl}/${id}`) as Observable<Feature>;
   }
 
+  getFeaturesToAsign() : Observable<Feature[]>{
+    return this.http.get(this.baseUrl+"/toAsign") as Observable<Feature[]>;
+  }
+
   addFeature(feature: Feature): Observable<Feature>  {
       return this.http.post(this.baseUrl, feature)  as Observable<Feature>;
   }

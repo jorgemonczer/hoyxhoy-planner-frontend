@@ -69,17 +69,17 @@ export class SpendingComponent implements OnInit {
 
     this.columnDefs = [
       { headerName: 'Id', field: 'id', hide: true },
-      { headerName: 'F.Code', field: 'feature.code', filter: 'text', width: 100},
+      { headerName: 'F.Code', field: 'feature.code', filter: 'text', width: 110},
       { headerName: 'Feature Title', field: 'feature.title', filter: 'text', width: 200 },
-      { headerName: 'Estimated', field: 'feature.estimatedHours', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter ,width: 100 },
-      { headerName: 'Spending', field: 'spending', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 100 },
+      { headerName: 'Estimated', field: 'feature.estimatedHours', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter ,width: 130 },
+      { headerName: 'Spending', field: 'spending', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 120 },
       { headerName: 'Asigned', field: 'user.name', filter: 'text' , width: 150 }
     ];
 
     for (let index = 0; index < loginService.currentSpring.springDays; index++) {
 //        this.columnDefs.push( { headerName : this.dateHeader(index+1), children: [{ headerName: index+1, valueGetter: (params: any) => params.data.spendingsInt[index], valueSetter: (params: any) => this.valueSetter(params,index), editable: true, suppressSorting: true, suppressMenu : true, type: "numericColumn", width: 55 }] })
 //      this.columnDefs.push({ headerName: index+1, valueGetter: (params: any) => params.data.spendingsInt[index], valueSetter: (params: any) => this.valueSetter(params,index), editable: true, suppressSorting: true, suppressMenu : true, type: "numericColumn", width: 55 })
-          this.columnDefs.push({ headerName: this.dateHeader(index+1), valueGetter: (params: any) => params.data.spendingsInt[index], valueSetter: (params: any) => this.valueSetter(params,index), editable: true, suppressSorting: true, suppressMenu : true, type: "text", valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 55, headerComponentParams : {template: this.getHeaderTemplate()} })
+          this.columnDefs.push({ headerName: this.dateHeader(index+1), valueGetter: (params: any) => params.data.spendingsInt[index], valueSetter: (params: any) => this.valueSetter(params,index), editable: true, suppressSorting: true, suppressMenu : true, type: "text", valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 75, headerComponentParams : {template: this.getHeaderTemplate()} })
         }
   }
 

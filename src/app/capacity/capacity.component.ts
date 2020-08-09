@@ -48,9 +48,9 @@ export class CapacityComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'Id', field: 'id', hide: true },
       { headerName: 'User', field: 'user.name', filter: 'text' , width: 150 },
-      { headerName: 'Available Hs', field: 'availableHours', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
+      { headerName: 'Available Hs', field: 'availableHours', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 140 },
       { headerName: 'Total Hs', field: 'availableOnSpring', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
-      { headerName: 'Remaining Hs', field: 'remainingOnSpring', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 130 },
+      { headerName: 'Remaining Hs', field: 'remainingOnSpring', type: "numericColumn", filter: 'number', valueFormatter: this.frm.ag_numberTwoDecimalFormatter, width: 150 },
       { headerName: '', cellRendererFramework: MatEditButtonGridRenderComponent, width: 75 },
       { headerName: '', suppressFilter: true, cellRendererFramework: MatRemoveButtonGridRenderComponent, width: 75 }
     ];

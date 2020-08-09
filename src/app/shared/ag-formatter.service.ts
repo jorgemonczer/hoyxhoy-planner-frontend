@@ -16,6 +16,14 @@ export class AgFormatterService {
        return params.value;
     }
 
+    ag_percentageTwoDecimalFormatter(params: any) : string {
+      if (params.value || params.value == 0) {
+        let value = params.value * 100;
+         return value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) + "%"
+       }
+       return params.value;
+    }
+
     setTwoNumberDecimal(event: any) {
       event.target.value = parseFloat(event.target.value).toFixed(2);
     }
